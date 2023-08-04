@@ -1,0 +1,66 @@
+/* manage.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+a {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007BFF;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#clearButton {
+  background-color: #FF0000;
+}
+
+#clearButton:hover {
+  background-color: #CC0000;
+}
+
+.deleteButton {
+  background-color: #FF0000;
+}
+
+.deleteButton:hover {
+  background-color: #CC0000;
+}
+
+/* Style for the search input */
+#searchInput {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}

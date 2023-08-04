@@ -1,0 +1,61 @@
+/* popup.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  width: 400px; /* Set the width of the popup container */
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+textarea {
+  margin-bottom: 10px;
+  width: 95%;
+  height: 150px; /* Set the height of the textarea */
+  resize: none;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: none; /* Hide the borders of the textarea */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  outline: none; /* Remove the default focus outline */
+}
+
+textarea:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 3px #007BFF; /* Add a custom focus effect */
+}
+
+a {
+  text-decoration: none;
+  color: #007BFF;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #007BFF;
+  color: #FFF;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#manageButton {
+  background-color: #28a745;
+}
+
+#manageButton:hover {
+  background-color: #1a682c;
+}
