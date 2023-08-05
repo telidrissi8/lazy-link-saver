@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Saved with highlight",
+  "name": "Save with highlight",
   "version": "1.0",
-  "description": "Saved with highlight",
+  "description": "Save with highlight",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

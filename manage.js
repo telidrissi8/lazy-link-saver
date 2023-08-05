@@ -11,10 +11,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function createListItem(entry) {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+    <div class="entry-details">
+      <a href="${entry.link}" target="_blank">${entry.text}</a>
+      ${entry.note ? `<p class="note">${entry.note}</p>` : ''}
+    </div>
+    <button class="deleteButton" data-url="${entry.link}">Delete</button>
+    `;
+    return listItem;
+  }
+
   //// Search ////
   function filterEntries(keyword) {
-    chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-      const filteredEntries = result.savedWithHighlight.filter((entry) =>
+    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+      const filteredEntries = result.saveWithHighlight.filter((entry) =>
         entry.text.toLowerCase().includes(keyword.toLowerCase())
       );
       updateList(filteredEntries);
@@ -31,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //// Refresh ////
   function refreshData() {
     document.getElementById("searchInput").value = "";
-    chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-      updateList(result.savedWithHighlight);
+    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+      updateList(result.saveWithHighlight);
     });
   }
 
@@ -44,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //// Export ////
   function exportData() {
-    chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-      const savedData = JSON.stringify(result.savedWithHighlight);
+    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+      const savedData = JSON.stringify(result.saveWithHighlight);
       const blob = new Blob([savedData], { type: "application/json" });
       const url = URL.createObjectURL(blob);
 
@@ -72,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         const importedData = JSON.parse(event.target.result);
         if (Array.isArray(importedData)) {
-          chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-            const mergedData = result.savedWithHighlight.concat(importedData);
-            chrome.storage.sync.set({ savedWithHighlight: mergedData }, function () {
+          chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+            const mergedData = result.saveWithHighlight.concat(importedData);
+            chrome.storage.sync.set({ saveWithHighlight: mergedData }, function () {
               updateList(mergedData);
             });
           });
@@ -110,32 +122,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function createListItem(entry) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `
-      <a href="${entry.link}" target="_blank">${entry.text}</a>
-      <button class="deleteButton" data-url="${entry.link}">Delete</button>
-    `;
-    return listItem;
-  }
-
   function deleteEntry(url) {
-    chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-      const savedEntries = result.savedWithHighlight;
+    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+      const savedEntries = result.saveWithHighlight;
       const updatedEntries = savedEntries.filter(function (entry) {
         return entry.link !== url;
       });
 
-      chrome.storage.sync.set({ savedWithHighlight: updatedEntries }, function () {
+      chrome.storage.sync.set({ saveWithHighlight: updatedEntries }, function () {
         updateList(updatedEntries);
       });
     });
   }
-
-  chrome.storage.sync.get({ savedWithHighlight: [] }, function (result) {
-    const savedEntries = result.savedWithHighlight;
-    updateList(savedEntries);
-  });
 
   savedDataList.addEventListener("click", function (event) {
     if (event.target.classList.contains("deleteButton")) {
@@ -146,10 +144,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   clearButton.addEventListener("click", function () {
     if (confirm("Are you sure you want to clear all saved data?")) {
-      chrome.storage.sync.set({ savedWithHighlight: [] }, function () {
+      chrome.storage.sync.set({ saveWithHighlight: [] }, function () {
         updateList([]); // Update the displayed list with an empty array
       });
     }
+  });
+
+  //// Main ////
+  chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+    const savedEntries = result.saveWithHighlight;
+    updateList(savedEntries);
   });
 });
 

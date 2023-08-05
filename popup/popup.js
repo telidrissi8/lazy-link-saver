@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const linkToHighlightAnchor = document.getElementById("linkToHighlight");
+  const saveButton = document.getElementById("saveButton");
+  const manageButton = document.getElementById("manageButton");
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     if (!tabs || !tabs[0] || tabs[0].url.startsWith("chrome") || tabs[0].url.startsWith("chrome")) {
@@ -16,19 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const saveButton = document.getElementById("saveButton");
   saveButton.addEventListener("click", function () {
     const link = linkToHighlightAnchor.href.trim();
     const text = linkToHighlightAnchor.innerHTML.trim();
-
-    const note = document.getElementById("note");
 
     if (link && text) {
       chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
         const newEntry = {
           link: link,
           text: text,
-          note: note.value
         };
 
         result.saveWithHighlight.push(newEntry);
@@ -46,8 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  const manageButton = document.getElementById("manageButton");
   manageButton.addEventListener("click", function () {
-    chrome.tabs.create({ url: chrome.runtime.getURL("manage.html") });
+    chrome.tabs.create({ url: chrome.runtime.getURL("manage/manage.html") });
   });
 });

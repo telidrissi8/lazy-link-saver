@@ -21,9 +21,24 @@ li {
   border-bottom: 1px solid #ddd;
 }
 
+li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.entry-details {
+  flex: 1;
+}
+
 a {
   text-decoration: none;
   color: #007BFF;
+}
+
+.note {
+  color: #888; /* Gray font color for the note */
+  font-size: 14px; /* Smaller font size for the note */
+  margin-left: 20px; /* Indentation for the note */
 }
 
 button {
