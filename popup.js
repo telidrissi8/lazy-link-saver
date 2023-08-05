@@ -2,18 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const linkToHighlightAnchor = document.getElementById("linkToHighlight");
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    if (!tabs || !tabs[0] || tabs[0].url.startsWith("chrome") || tabs[0].url.startsWith("chrome")) {
-      return;
-    } else {
+    setTimeout(function () {
       chrome.tabs.sendMessage(
         tabs[0].id,
-        { action: "getSelectedTextAndLinkToHighlight" }, function (
-        response
-      ) {
-          linkToHighlightAnchor.href = response.linkToHighlight;
-          linkToHighlightAnchor.innerHTML = response.selectedText;
-      });
-    }
+        { action: "getSelectedTextAndLinkToHighlight" },
+        function (response) {
+          if (response && response.linkToHighlight) {
+            linkToHighlightAnchor.href = response.linkToHighlight;
+            linkToHighlightAnchor.innerHTML = response.selectedText;
+          } else {
+            linkToHighlightAnchor.href = "";
+            linkToHighlightAnchor.innerHTML = "";
+          }
+        }
+      );
+    }, 500);
   });
 
   const saveButton = document.getElementById("saveButton");
