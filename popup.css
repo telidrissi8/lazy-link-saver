@@ -1,8 +1,8 @@
-/* popup.css */
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  width: 400px; /* Set the width of the popup container */
+  width: 400px;
 }
 
 h1 {
@@ -12,19 +12,19 @@ h1 {
 textarea {
   margin-bottom: 10px;
   width: 95%;
-  height: 150px; /* Set the height of the textarea */
+  height: 150px;
   resize: none;
   padding: 10px;
   background-color: #f8f8f8;
-  border: none; /* Hide the borders of the textarea */
+  border: none;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 14px;
-  outline: none; /* Remove the default focus outline */
+  outline: none;
 }
 
 textarea:focus {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 3px #007BFF; /* Add a custom focus effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 0 3px #007BFF;
 }
 
 a {

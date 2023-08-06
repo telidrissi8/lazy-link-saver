@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const importInput = document.getElementById("importInput");
 
   importButton.addEventListener("click", function () {
-    importInput.click(); // Trigger the click event on the file input
+    importInput.click();
   });
 
   importInput.addEventListener("change", function (event) {
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
   clearButton.addEventListener("click", function () {
     if (confirm("Are you sure you want to clear all saved data?")) {
       chrome.storage.sync.set({ saveWithHighlight: [] }, function () {
-        updateList([]); // Update the displayed list with an empty array
+        updateList([]);
       });
     }
   });

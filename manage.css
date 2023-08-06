@@ -1,4 +1,4 @@
-/* manage.css */
+
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -36,9 +36,9 @@ a {
 }
 
 .note {
-  color: #888; /* Gray font color for the note */
-  font-size: 14px; /* Smaller font size for the note */
-  margin-left: 20px; /* Indentation for the note */
+  color: #888;
+  font-size: 14px;
+  margin-left: 20px;
 }
 
 button {
@@ -71,7 +71,6 @@ button:hover {
   background-color: #CC0000;
 }
 
-/* Style for the search input */
 #searchInput {
   width: 50%;
   padding: 8px;
