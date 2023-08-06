@@ -1,0 +1,38 @@
+# LazyLinkSaver
+
+LazyLinkSaver is a Chrome extension that empowers you to save direct links to specific text fragments on any web page for reading later. It's the perfect tool for browsing without the rush, letting you explore intriguing content and postponing reading to your convenience.
+
+## Features
+
+- **Effortless Link Saving**: Save direct links to selected text snippets on any webpage with a simple click.
+- **Browse at Your Own Pace**: Discover interesting articles, helpful tutorials, and captivating quotes, then put off reading until the perfect moment.
+- **User-Friendly Interface**: A sleek and intuitive user interface makes it easy to save and manage your favorite fragments of knowledge.
+- **Organize with Ease**: Use the built-in manager to organize, view, and access your saved links effortlessly.
+
+## How to Use
+
+1. Highlight the specific text fragment you want to save on any web page.
+2. Right-click on the highlighted text.
+3. From the context menu, select "Save Link with LazyLinkSaver."
+4. The link to the text fragment will be added to your LazyLinkSaver collection.
+
+## Contributing
+
+We welcome contributions from the open-source community! If you'd like to contribute to LazyLinkSaver, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your contribution.
+3. Make your changes and improvements.
+4. Submit a pull request detailing your changes.
+
+## License
+
+LazyLinkSaver is released under the [GNU General Public License (GPL) version 3](https://www.gnu.org/licenses/gpl-3.0.txt). Please review the license terms before using the extension.
+
+## Feedback and Support
+
+We value your feedback! If you encounter any issues or have suggestions for improvements, please open an issue on our [GitHub repository](https://github.com/trk-tech/LazyLinkSaver).
+
+For general support and questions, you can reach out to us at 	trk.tech.project@gmail.com.
+
+Happy browsing and enjoy saving those intriguing links with LazyLinkSaver!
