@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //// Search ////
   function filterEntries(keyword) {
-    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-      const filteredEntries = result.saveWithHighlight.filter((entry) =>
+    chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+      const filteredEntries = result.lazyLinkSaver.filter((entry) =>
         entry.text.toLowerCase().includes(keyword.toLowerCase())
       );
       updateList(filteredEntries);
@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //// Refresh ////
   function refreshData() {
     document.getElementById("searchInput").value = "";
-    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-      updateList(result.saveWithHighlight);
+    chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+      updateList(result.lazyLinkSaver);
     });
   }
 
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //// Export ////
   function exportData() {
-    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-      const savedData = JSON.stringify(result.saveWithHighlight);
+    chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+      const savedData = JSON.stringify(result.lazyLinkSaver);
       const blob = new Blob([savedData], { type: "application/json" });
       const url = URL.createObjectURL(blob);
 
@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
       try {
         const importedData = JSON.parse(event.target.result);
         if (Array.isArray(importedData)) {
-          chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-            const mergedData = result.saveWithHighlight.concat(importedData);
-            chrome.storage.sync.set({ saveWithHighlight: mergedData }, function () {
+          chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+            const mergedData = result.lazyLinkSaver.concat(importedData);
+            chrome.storage.sync.set({ lazyLinkSaver: mergedData }, function () {
               updateList(mergedData);
             });
           });
@@ -123,13 +123,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function deleteEntry(url) {
-    chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-      const savedEntries = result.saveWithHighlight;
+    chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+      const savedEntries = result.lazyLinkSaver;
       const updatedEntries = savedEntries.filter(function (entry) {
         return entry.link !== url;
       });
 
-      chrome.storage.sync.set({ saveWithHighlight: updatedEntries }, function () {
+      chrome.storage.sync.set({ lazyLinkSaver: updatedEntries }, function () {
         updateList(updatedEntries);
       });
     });
@@ -144,15 +144,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   clearButton.addEventListener("click", function () {
     if (confirm("Are you sure you want to clear all saved data?")) {
-      chrome.storage.sync.set({ saveWithHighlight: [] }, function () {
+      chrome.storage.sync.set({ lazyLinkSaver: [] }, function () {
         updateList([]);
       });
     }
   });
 
   //// Main ////
-  chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
-    const savedEntries = result.saveWithHighlight;
+  chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
+    const savedEntries = result.lazyLinkSaver;
     updateList(savedEntries);
   });
 });

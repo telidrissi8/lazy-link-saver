@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Save with highlight",
+  "name": "Lazy Link Saver",
   "version": "1.0",
-  "description": "Save with highlight",
+  "description": "Lazy Link Saver",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",

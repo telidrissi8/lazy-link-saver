@@ -27,19 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const note = document.getElementById("note");
 
     if (link && text) {
-      chrome.storage.sync.get({ saveWithHighlight: [] }, function (result) {
+      chrome.storage.sync.get({ lazyLinkSaver: [] }, function (result) {
         const newEntry = {
           link: link,
           text: text,
           note: note.value
         };
 
-        result.saveWithHighlight.push(newEntry);
+        result.lazyLinkSaver.push(newEntry);
 
-        console.log(result.saveWithHighlight);
+        console.log(result.lazyLinkSaver);
 
         if (JSON.stringify(result).length < chrome.storage.sync.QUOTA_BYTES_PER_ITEM) {
-          chrome.storage.sync.set({ saveWithHighlight: result.saveWithHighlight }, function () {
+          chrome.storage.sync.set({ lazyLinkSaver: result.lazyLinkSaver }, function () {
             alert("Entry saved successfully!");
           });
         } else {
